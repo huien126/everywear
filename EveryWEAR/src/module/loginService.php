@@ -1,0 +1,1 @@
+<?php if (!isset($_SESSION["EWUID"])) {header("Location: /member/login?notLogin");} ?>

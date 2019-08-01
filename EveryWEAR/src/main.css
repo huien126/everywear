@@ -1,0 +1,564 @@
+@font-face {
+    font-family: 'Nanum Gothic';
+    src: local('NanumGothic'), url('/image/NanumGothic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@-webkit-keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(-50%,0,0);
+        transform: translate3d(-50%,0,0)
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0)
+    }
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(-50%,0,0);
+        transform: translate3d(-50%,0,0)
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0)
+    }
+}
+
+@keyframes hiding {
+	0% {
+		opacity: 1;
+		max-height: 100px;
+		padding: 5px;
+	} 
+	to {
+		opacity: 0;
+		padding: 0;
+		max-height: 0px;
+	}
+}
+
+.fadeInLeft {
+    -webkit-animation-name: fadeInLeft;
+    animation-name: fadeInLeft
+}
+
+
+
+/* Make clicks pass-through */
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: #29d;
+
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+  opacity: 1.0;
+
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+      -ms-transform: rotate(3deg) translate(0px, -4px);
+          transform: rotate(3deg) translate(0px, -4px);
+}
+
+/* Remove these to get rid of the spinner */
+#nprogress .spinner {
+  display: block;
+  position: fixed;
+  z-index: 1031;
+  top: 15px;
+  right: 15px;
+}
+
+#nprogress .spinner-icon {
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+
+  border: solid 2px transparent;
+  border-top-color: #29d;
+  border-left-color: #29d;
+  border-radius: 50%;
+
+  -webkit-animation: nprogress-spinner 400ms linear infinite;
+          animation: nprogress-spinner 400ms linear infinite;
+}
+
+.nprogress-custom-parent {
+  overflow: hidden;
+  position: relative;
+}
+
+.nprogress-custom-parent #nprogress .spinner,
+.nprogress-custom-parent #nprogress .bar {
+  position: absolute;
+}
+
+@-webkit-keyframes nprogress-spinner {
+  0%   { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes nprogress-spinner {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+/*NProgress End*/
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+body, ul {
+	margin: 0;
+	padding: 0;
+}
+li.li-noDeco {
+	list-style-type: none;
+}
+
+#Logo {
+	margin: 15px;
+}
+
+#Logo img {
+	margin: 0 auto;
+	display: block;
+}
+
+.bg-black {
+	background-color: black;
+	color: white;
+}
+.bg-gray {
+	background-color: #3e3e3e;
+}
+.bg-mint {
+	background-color: #4bd1a0 !important;
+}
+
+#navigator {
+	display: inline-block;
+	overflow: hidden;
+	margin: 0 6%;
+	width: 88%;
+}
+#navigator li {
+	float: left;
+	font-size: larger;
+	transition-duration: .4s;
+	font-weight: bold;
+}
+li.menu-right {
+	float: right!important;
+}
+#navigator li:hover {
+	color: #00C06D;
+}
+
+#navigator a {
+	display: block;
+	line-height: 50px;
+	padding: 0 35px;
+}
+.onlyMobile,#menuLinker {
+	display: none;
+}
+#footer {
+	padding: 10px 0 10px 10%;
+}
+.ico {
+	width: 35px;
+	height: 5px;
+	background-color: white;
+	margin: 6px 0;
+	transition: 0.4s;
+}
+.ico-menu {
+	display: inline-block;
+	cursor: pointer;
+	margin-right: 4px;
+}
+[for="menuLinker"] {
+	display: flex;
+	align-items: center;
+}
+#From_OldVersion {
+	animation-name: hiding;
+	animation-fill-mode: forwards;
+	animation-duration: 1s;
+	animation-delay: 3s;
+
+
+}
+@media (max-width: 700px) {
+	.stick {
+		width: 100%;
+		/*height: 0;*/
+		max-height: 0px;
+		opacity: 0;
+	}
+	input[name="isMobile.menuController()"]:checked ~ .stick {
+		transition: opacity ease-in-out .4s .2s,max-height ease-out .4s 0s;
+		/*height: auto;*/
+		max-height: 100px;
+		opacity: 1;
+	}
+
+	input[name="isMobile.menuController()"]:checked ~ .onlyMobile label .ico-menu .bar1 {
+		-webkit-transform: rotate(-45deg) translate(-9px, 6px);
+		transform: rotate(-45deg) translate(-9px, 6px);
+	}
+	input[name="isMobile.menuController()"]:checked ~ .onlyMobile label .ico-menu .bar2 {
+		opacity: 0;
+	}
+	input[name="isMobile.menuController()"]:checked ~ .onlyMobile label .ico-menu .bar3 {
+		-webkit-transform: rotate(45deg) translate(-8px, -8px);
+		transform: rotate(45deg) translate(-8px, -8px);
+	}
+	.onlyMobile {
+		display: block!important;
+	}
+}
+/*End header And Footer*/
+#root {
+	font-family: 'Nanum Gothic', sans-serif;
+}
+section {
+	padding: 13%;
+	overflow: auto;
+}
+.s1 {
+	background-color: beige;
+	animation-delay: .4s;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
+	animation-name: fadeInLeft;
+	opacity: 0;
+}
+.s2 {
+	background-color: #4effb2;
+}
+.s2-container {
+	margin-top: 100px;
+}
+.s2-image {
+	float: left;
+	width: 25%;
+	display: block;
+}
+.s2-image img {
+	height: 150px;
+	width: 150px;
+}
+.center{
+	text-align: center;
+}
+@media (max-width: 700px) {
+	.s2-image {
+		width: 100%;
+	}
+}
+/*index.do End*/
+.donation-head {
+	overflow: auto;
+	background-color: #96ceb3;
+}
+.donation-head h1 {
+	margin: 40px 0 44px 0;
+	font-size: 95px;
+}
+.donation {
+	width: 33.33%;
+	padding: 7% 8%;
+}
+.donation-manual {
+	overflow: auto;
+	display: flex;
+}
+.donation-point {
+	color: #4BD1A0;
+}
+.donation span {
+	font-size: 38px;
+}
+.donation-bar {
+	width: 42px;
+	height: 8px;
+	margin: 20px auto;
+	background-color: white;
+}
+.donation-bottom {
+	background-color: beige;
+}
+button.donation-btn {
+	background-color: #96ceb3;
+	width: 420px;
+	height: 105px;
+	margin: 100px 0;
+	font-size: 50px;
+	border: #96ceb3;
+	cursor: pointer;
+}
+.black {
+	color: black;
+}
+.white {
+	color: white;
+}
+@media (max-width: 700px) {
+	.donation-manual {
+		display: block;
+	}
+	.donation {
+		width: auto;
+	}
+	.donation-btn {
+		width: 80% !important;
+	}
+}
+/*Donation.do End*/
+.Login-wrapper {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.Login-form-signin {
+  max-width: 380px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.Login-form-signin .Login-form-signin-heading,
+.Login-form-signin {
+  margin-bottom: 30px;
+}
+.Login-form-signin {
+  font-weight: normal;
+  overflow: auto;
+}
+.Login-form-signin .Login-form-control {
+	position: relative;
+	font-size: 16px;
+	height: auto;
+	padding: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	display: block;
+	width: 100%;
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.428571429;
+	color: #555;
+	vertical-align: middle;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+	-webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.Login-form-signin .Login-form-control:focus {
+  z-index: 2;
+}
+.Login-form-signin input[type="email"] {
+  margin-bottom: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.Login-form-signin input[type="password"] {
+  margin-bottom: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.Login-btn {
+	display: inline-block;
+	float: left;
+    width: 50%;
+    padding-right: 0;
+    padding-left: 0;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 6px;
+    color: #fff;
+    background-color: #428bca;
+    border: none;
+    border-color: #357ebd;
+    cursor: pointer;
+    margin: 20px 0 10px 0;
+}
+.red {
+	color:red;
+	font-size: small;
+	display: block;
+}
+/*Login.do End*/
+
+/* Add padding to containers */
+.register-form {
+  padding: 16px;
+}
+
+/* Full-width input fields */
+.register-form input[type=email], .register-form input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+.register-form input[type=email]:focus, .register-form input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+.register-form hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.register-form .registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.register-form .registerbtn:hover {
+  opacity:1;
+}
+
+/* Add a blue text color to links */
+.register-form a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+#join_frm {
+	margin: 0 2%;
+	overflow: auto;
+}
+/*Register.do End*/
+
+[data-html-title="welcome"]{
+	margin: 100px 0;
+}
+/*Welcome.do End*/
+
+
+#donation_order input[type=text],#donation_order input[type=number],#donation_order select,#donation_order textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+#donation_order textarea {
+	height: 200px;
+}
+
+#donation_order label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+#donation_order input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+#donation_order input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.donation_order_container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px 40px;
+}
+
+#donation_order .col {
+  float: left;
+  margin-top: 6px;
+}
+
+.wid-25 {
+	width: 25%;
+}
+.wid-75 {
+	width: 75%;
+}
+
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+/*Order.do End*/
+section.greet {
+	padding: 0 10%;
+	margin: 100px 0;
+}
+[data-html-title="greeting"] img {
+	width: 290px;
+	height: 130px;
+	float: right;
+}
